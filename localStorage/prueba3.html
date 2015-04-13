@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+ <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+	
+		
+		
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		var MyLocalStorage = {};
+
+		MyLocalStorage.getItem = function(key) {
+			return new MyItem(JSON.parse(localStorage.getItem(key)));
+		};
+
+		MyLocalStorage.setItem = function(key, object) {
+			localStorage.setItem(key, JSON.stringify(object));
+			return this.getItem(key);
+		};
+
+		function MyItem(object, key) {
+			this.item = object;
+			this.key = key;
+			this.addSubItem = function(subItem) {
+				if (typeof this.item.push == 'function') {
+					this.item.push(subItem);
+					this.save();
+					return this;
+				}
+				return false;
+			};
+			this.setItem = function(object) {
+				this.item = object;
+				this.save();
+				return this;
+			};
+			this.save = function() {
+				MyLocalStorage.setItem(this.key, this.item);
+			};
+			this.toString = function() {
+				return this.item.toString();
+			}
+		}
+		
+		alert(
+			MyLocalStorage
+				.setItem('names', ['john', 'paul', 'ringo'])
+				.addSubItem('george')
+				.toString()
+		); 
+			
+	</script>
+    </body>
+ </html>

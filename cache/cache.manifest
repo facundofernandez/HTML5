@@ -1,0 +1,21 @@
+CACHE MANIFEST
+# version 0.1
+
+# archivos explícitos
+index.html
+css/style.css
+js/script.js
+
+# si el usuario está offline se mostrará este archivo
+FALLBACK:
+/ /offline.html
+
+# todos los demás recursos requieren que el usuario esté conectado
+NETWORK:
+*
+
+# recursos adicionales para la caché
+CACHE:
+img/banner.jpg
+img/contacto.jpg
+img/background.jpg

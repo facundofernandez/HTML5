@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+ <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+	<input type="text" id="texto"/><input type="button" id="boton"/>
+    <header>
+       <h1> Mi Lista de Tareas </h1>
+       <span id="mensaje"></span>
+    </header>
+        <section>
+            <ul id="lista" contenteditable="true">
+                <li></li>
+            </ul>
+        </section>
+     <input type="button" id="limpiar" value="Limpiar" />
+    </body>
+ </html>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+		$(document).ready(function() {
+			$("#limpiar").click(function(){
+				localStorage.removeItem('listado');
+			});
+			   
+			$("#lista").blur(function(){
+				localStorage.setItem('listado',$("#lista").html());
+			});
+			  
+			 $("#boton").click(function(){
+				localStorage.setItem('listado',$("#lista").html());
+			 });
+			  
+			if (localStorage.getItem('listado')){
+					$("#mensaje").text("Desde el LocalStorage");
+					$("#lista").html(localStorage.getItem('listado'));
+				}else{
+					$("#mensaje").text("Sin datos en  el LocalStorage");
+            }
+        });   
+		
+</script>

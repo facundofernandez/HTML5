@@ -1,0 +1,57 @@
+<html>
+<head>
+	
+<style>
+.cube-container {
+  height: 200px;
+  -webkit-	: 300;
+  position: relative;
+  width: 200px;
+}
+.cube {  
+  height: 100%;
+  position: absolute;
+  -webkit-transform: translateZ(-100px);
+  -webkit-transform-style: preserve-3d;
+  width: 100%;
+}
+.side {
+  background: rgba(142, 198, 63, 0.3);
+  border: 2px solid #8ec63f;
+  height: 196px;
+  position: absolute;
+  width: 196px;
+}
+.front {
+  -webkit-transform: translateZ(100px);
+}
+.back {
+  -webkit-transform: rotateX(180deg) translateZ(100px);
+}
+.left {
+  -webkit-transform: rotateY(-90deg) translateZ(100px);
+}
+.right {
+  -webkit-transform: rotateY(90deg) translateZ(100px);
+}
+.top {
+  -webkit-transform: rotateX(90deg) translateZ(100px);
+}
+.bottom {
+  -webkit-transform: rotateX(-90deg) translateZ(100px);
+}
+</style>
+</head>
+<body>
+<div class="cube-container">
+  <div class="cube">
+    <figure class="side front">1</figure>
+    <figure class="side back">2</figure>
+    <figure class="side left">3</figure>
+    <figure class="side right">4</figure>
+    <figure class="side top">5</figure>
+    <figure class="side bottom">6</figure>
+  </div>
+</div>
+</body>
+</html>

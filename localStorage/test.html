@@ -1,0 +1,80 @@
+<script>
+
+	if('localStorage' in window && window['localStorage'] !== null) {
+	
+		alert('Genial, tenemos un navegador decente que soporta LocalStorage');
+		var storage = localStorage
+		
+	} else { alert('Como seguimos utilizando un navegador viejo, Santa Claus no nos traerá nada esta Navidad'); }
+
+	/* Utilizando la Api de Local Storage, podemos guardar y luego recuperar un valor */
+	 
+	localStorage.setItem('saludo', 'Bienvenidos a localStorage');
+	valor = localStorage.getItem('saludo');
+	 
+	/* Pero esta no es la única manera, ya que también podemos hacer lo siguiente */
+	 
+	localStorage['saludo'] = 'Este saludo también es válido';
+	valor = localStorage['saludo'];
+	 
+	/* Y claro, esto también es válido */
+	 
+	localStorage.saludo = 'Y este es mi método favorito';
+	valor = localStorage.saludo;
+
+	
+	
+	/* Podemos saber cuántos elementos tenemos guardados */
+ 
+	alert('Tenemos ' + localStorage.length + ' elementos dentro de Local Storage');
+	 
+	/* Eliminar elementos también es muy sencillo de lograr */
+	 
+	localStorage.removeItem('saludo');
+	 
+	/* Y si queremos acceder a la información de localStorage de manera secuencial,
+	   entonces lo hacemos gracias a su método 'key' que devuelve la clave en
+	   determinada posición */
+	 
+	for(var i=0, t=localStorage.length; i < t; i++) {
+		key = localStorage.key(i);
+		alert('Para la clave ' + key + ' el valor es: ' + localStorage[key]);
+	} 
+		
+	
+	persona = {nombre: 'Pablo Rigazzi', edad: 33};
+	localStorage.autor = persona;
+	alert(localStorage.autor);
+		
+	// Primero convertimos el objeto en una cadena de texto
+ 
+	localStorage.autor = JSON.stringify(persona);
+	 
+	/* Y ahora, al recuperarlo, convertimos el string nuevamente en un objeto */
+	 
+	var autor = JSON.parse(localStorage.autor);
+	alert(typeof autor);
+	 
+	// Aqui obtendremos que el tipo de la variable es "object"
+		
+		
+		
+		
+		
+	hay_cambio = function(e) {
+		console.log("Dentro de la clave " + e.key + " el valor anterior era " + e.oldValue + ' y el nuevo es ' + e.newValue);
+	}
+	
+	if(window.addEventListener) {
+		window.addEventListener('storage', hay_cambio, false);
+	} else {
+		// Hay que soportar IE6, 7 y 8, lo lamento
+		window.attachEvent('onstorage', hay_cambio);
+	}
+	
+	
+	
+	
+	
+	
+</script>
